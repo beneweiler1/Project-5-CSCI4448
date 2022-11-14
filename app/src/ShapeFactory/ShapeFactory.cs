@@ -4,8 +4,8 @@ class ShapeFactory : Factory
  {
  switch (type)
  {
- case "A": return new ConcreteShapeA();
- case "B": return new ConcreteShapeB();
+ case "A": return new Cube();
+ case "B": return new Cylinder();
  default: throw new ArgumentException("Invalid type", "type");
  }
  }
