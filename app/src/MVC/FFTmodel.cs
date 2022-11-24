@@ -1,14 +1,15 @@
+using System.IO;
 
 public interface FFTmodelInterface {
     void readExcelfile(string filename);
 
-    int getMid();
+    double getMid();
 
-    int getHigh();
+    double getHigh();
 
-    int getLow();
+    double getLow();
     
-    void setFFTvalues(int low, int high, int mid);
+    void setFFTvalues(double low, double high, double mid);
 
     void registerObserver(FFTObserver o);
 
@@ -32,28 +33,38 @@ public class FFTmodel : FFTmodelInterface {
     private List<FFTObserver> FFTlst = new List<FFTObserver>();
     // ArrayList BPMlst = new ArrayList();
 
-    private int bpm = 90; //default
-    private int low;
-    private int mid;
-    private int high;
+    private double bpm = 90; //default
+    private double low;
+    private double mid;
+    private double high;
 
     public void readExcelfile(string filename) {
         //try opening excel file and gathering data
+        // https://stackoverflow.com/questions/5282999/reading-csv-file-and-storing-values-into-an-array
+        using(var reader = new StreamReader(@"db/Song1.csv")) {
+            var line = reader.ReadLine();
+            var values = line.Split(',');
+            this.low = Convert.ToDouble(values[0]);
+            // this.low = Double.TryParse(values[0], System.Globalization.NumberStyles.Float, out this.low);
+            this.mid =Convert.ToDouble(values[1]);
+            this.high =Convert.ToDouble(values[0]);
+            Console.WriteLine(this.low + "," + this.mid + "," + this.high);
+        }
     }
 
-    public int getMid() {
+    public double getMid() {
         return this.mid;
     }
 
-    public int getHigh() {
+    public double getHigh() {
         return this.high;
     }
 
-    public int getLow() {
+    public double getLow() {
         return this.low;
     }
 
-    public void setFFTvalues(int low, int high, int mid) {
+    public void setFFTvalues(double low, double high, double mid) {
         this.low = low;
         this.high = high;
         this.mid = mid;
