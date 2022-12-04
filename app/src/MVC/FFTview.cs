@@ -12,6 +12,7 @@ public class FFTview : FFTObserver {
         int high = model.getHigh();
         int mid = model.getMid();
         Console.WriteLine(low + "," + high + "," + mid);
+        //interpreter
     }
 
 }

@@ -1,7 +1,8 @@
 
+//types of animations listed below
 public interface IAnimation
 {
-    string Animation(int speed); //type is subject to change
+    string Animation(int speed);
 }
 
 public class TopSpin : IAnimation
