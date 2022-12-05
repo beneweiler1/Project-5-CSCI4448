@@ -1,12 +1,12 @@
 public interface Observer {
-    public void update(int high, int mid, int low);
+    public void update(double high, double mid, double low);
 }
 
 public class FFTObserver : Observer {
-    protected int high;
-    protected int mid;
-    protected int low;
-    public void update(int high, int mid, int low) {
+    protected double high;
+    protected double mid;
+    protected double low;
+    public void update(double high, double mid, double low) {
         this.low = low;
         this.high = high;
         this.mid = mid;

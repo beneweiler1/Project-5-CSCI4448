@@ -8,11 +8,10 @@ public class FFTview : FFTObserver {
         model.registerObserver(this);
     }
     void updateFFT() {
-        int low = model.getLow();
-        int high = model.getHigh();
-        int mid = model.getMid();
-        Console.WriteLine(low + "," + high + "," + mid);
-        //interpreter
+        double low = model.getLow();
+        double high = model.getHigh();
+        double mid = model.getMid();
+        Console.WriteLine(low + "," + mid + "," + high);
     }
 
 }
