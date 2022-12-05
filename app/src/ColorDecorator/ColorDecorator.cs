@@ -1,3 +1,5 @@
+//Decorator Pattern for color
+
 public class ColorDecorator : Color
 {
     protected Color _color;
