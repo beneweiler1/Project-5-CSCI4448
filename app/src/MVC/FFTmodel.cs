@@ -41,14 +41,18 @@ public class FFTmodel : FFTmodelInterface {
     public void readExcelfile(string filename) {
         //try opening excel file and gathering data
         // https://stackoverflow.com/questions/5282999/reading-csv-file-and-storing-values-into-an-array
-        using(var reader = new StreamReader(@"db/Song1.csv")) {
-            var line = reader.ReadLine();
-            var values = line.Split(',');
-            this.low = Convert.ToDouble(values[0]);
-            // this.low = Double.TryParse(values[0], System.Globalization.NumberStyles.Float, out this.low);
-            this.mid =Convert.ToDouble(values[1]);
-            this.high =Convert.ToDouble(values[0]);
-            Console.WriteLine(this.low + "," + this.mid + "," + this.high);
+        // https://stackoverflow.com/questions/15560011/how-to-read-a-csv-file-one-line-at-a-time-and-parse-out-keywords
+        using(StreamReader reader = new StreamReader(@"db/Song1.csv")) {
+            string line;
+            line = reader.ReadLine(); // read first line
+            while ((line = reader.ReadLine()) != null) {
+                var values = line.Split(',');
+                this.low = Convert.ToDouble(values[0]);
+                // this.low = Double.TryParse(values[0], System.Globalization.NumberStyles.Float, out this.low);
+                this.mid =Convert.ToDouble(values[1]);
+                this.high =Convert.ToDouble(values[0]);
+                Console.WriteLine(this.low + "," + this.mid + "," + this.high); 
+            }
         }
     }
 
