@@ -1,11 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Console.WriteLine("Hello, World!");
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> db3b67a0980b256e1407681d8a02f1cdcbf2815a
 // ShapeFactory factory = new ShapeFactory();
 
 //  Shape A = factory.FactoryMethod("A");
 //  A.draw(10);
+<<<<<<< HEAD
+>>>>>>> db3b67a0980b256e1407681d8a02f1cdcbf2815a
+=======
 >>>>>>> db3b67a0980b256e1407681d8a02f1cdcbf2815a
 
 //  Shape B = factory.FactoryMethod("B");
@@ -15,6 +21,7 @@
 // {
 //     _animation = strat;
 // }
+<<<<<<< HEAD
 InterpretStates interpretStates = new InterpretStates();
 ShapeFactory factory = new ShapeFactory();
 interpretStates.setStates(1,2,1);
@@ -30,10 +37,14 @@ shape.makeShape(10);
 //  var animationRenderer = new AnimationRenderer();
 
 =======
+=======
+
+>>>>>>> db3b67a0980b256e1407681d8a02f1cdcbf2815a
   // var context = new Context();
 
   // context.setStrategy(new BackSpin());
   // Console.WriteLine(context.executeStrategy(10));
+<<<<<<< HEAD
 >>>>>>> db3b67a0980b256e1407681d8a02f1cdcbf2815a
 
 //  IAnimation spin = new BackSpin();
@@ -45,6 +56,13 @@ shape.makeShape(10);
 //   RedColor red = new RedColor(color);
   //Console.WriteLine(red.Assemble());
 =======
+  // var color = new ConcreteColor();
+  // RedColor red = new RedColor(color);
+  // Console.WriteLine(red.Assemble());
+>>>>>>> db3b67a0980b256e1407681d8a02f1cdcbf2815a
+=======
+
+
   // var color = new ConcreteColor();
   // RedColor red = new RedColor(color);
   // Console.WriteLine(red.Assemble());
