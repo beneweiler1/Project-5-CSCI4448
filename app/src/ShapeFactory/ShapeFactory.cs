@@ -1,12 +1,50 @@
+//https://www.tutorialspoint.com/design_pattern/factory_pattern.htm
+//Factory to create Shapes
 class ShapeFactory : Factory
 {
- public override Shape FactoryMethod(string type)
+ public override Shape FactoryMethod(string shape, string animation, string color)
  {
- switch (type)
- {
- case "A": return new Cube();
- case "B": return new Cylinder();
- default: throw new ArgumentException("Invalid type", "type");
+    Shape _shape;
+
+ switch (shape)
+{
+    case "Cylinder": _shape = new Cylinder();
+    break;
+    case "Capsule": _shape = new Capsule();
+    break;
+    case "Sphere": _shape = new Sphere();
+    break;
+    case "Quad" : _shape = new Quad();
+    break;
+    case "Cube": _shape = new Cube();
+    break;
+ default: throw new ArgumentException("Invalid type");
  }
+
+switch (color)
+ {
+    case "Green": _shape.setGreenColor();
+        break;
+    case "Blue": _shape.setBlueColor();
+        break;
+    case "Red": _shape.setRedColor();
+        break;
+ default: throw new ArgumentException("Invalid type");
+ }
+
+switch (animation)
+ {
+    case "TopSpin": _shape.setAnimation(new TopSpin());
+        break;
+    case "BackSpin": _shape.setAnimation(new BackSpin());
+        break;
+    case "RightSpin": _shape.setAnimation(new RightSpin());
+        break;
+    case "LeftSpin": _shape.setAnimation(new LeftSpin());
+        break;
+    default: throw new ArgumentException("Invalid type");
+ }
+ return _shape;
+ 
  }
 }
