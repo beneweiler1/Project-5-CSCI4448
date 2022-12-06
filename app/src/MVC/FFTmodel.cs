@@ -51,7 +51,7 @@ public class FFTmodel : FFTmodelInterface {
                 // this.low = Double.TryParse(values[0], System.Globalization.NumberStyles.Float, out this.low);
                 this.mid =Convert.ToDouble(values[1]);
                 this.high =Convert.ToDouble(values[0]);
-                Console.WriteLine(this.low + "," + this.mid + "," + this.high); 
+                //Console.WriteLine(this.low + "," + this.mid + "," + this.high); 
             }
         }
     }

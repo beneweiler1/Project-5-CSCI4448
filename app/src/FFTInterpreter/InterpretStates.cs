@@ -1,3 +1,9 @@
+//https://medium.com/net-core/how-to-manage-states-with-state-design-pattern-in-c-d4ca47ec6aa
+
+//State pattern concept but does not have a class for each state option
+//instead there are fucntions to interpret the FFT values
+//FFT values are passed and the states of shape, color and animiation are changes
+//generateShape method uses the passed factory to return a shape
 public class InterpretStates:FFTInterpreter
 {
     private String _shape;
