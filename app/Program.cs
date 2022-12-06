@@ -8,8 +8,8 @@ Shape shape = interpretStates.generateShape(factory);
 //shape.makeShape(10);
 
 
- FFTmodel model = new FFTmodel();
-model.readExcelfile("Test");
+FFTmodel model = new FFTmodel();
+model.readExcelfile("test");
 
 
 interpretStates.setStates(model.getLow(), model.getMid(), model.getHigh());

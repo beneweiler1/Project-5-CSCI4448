@@ -42,7 +42,7 @@ public class FFTmodel : FFTmodelInterface {
         //try opening excel file and gathering data
         // https://stackoverflow.com/questions/5282999/reading-csv-file-and-storing-values-into-an-array
         // https://stackoverflow.com/questions/15560011/how-to-read-a-csv-file-one-line-at-a-time-and-parse-out-keywords
-        using(StreamReader reader = new StreamReader(@"db/Song1.csv")) {
+        using(StreamReader reader = new StreamReader(@"db/" + filename + ".csv")) {
             string line;
             line = reader.ReadLine(); // read first line
             while ((line = reader.ReadLine()) != null) {
