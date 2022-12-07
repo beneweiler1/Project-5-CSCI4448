@@ -1,8 +1,12 @@
 //shape object contains 3D shape type, color, and animation
 public abstract class Shape 
 {
+
     AnimationRenderer _animation = new AnimationRenderer(); //animation strategy pattern
     Color _color = new ConcreteColor(); //color with decorator pattern
+
+    // public Shape(){}
+
     public abstract void makeShape(int speed); //sets
 
     public void setRedColor()
@@ -25,7 +29,7 @@ public abstract class Shape
         this._animation.setAnimation(animation);
     }
 
-    public String getColor(){
+    public string getColor(){
         return this._color.Assemble();
     }
 
