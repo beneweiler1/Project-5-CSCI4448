@@ -29,4 +29,7 @@
  //Console.ReadKey();
 
  FFTmodel model = new FFTmodel();
- model.readExcelfile("Test");
+ model.initialize("Song1");
+ model.on();
+//  model.off();
+//  model.readExcelfile("Test");

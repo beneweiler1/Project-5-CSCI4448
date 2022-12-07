@@ -1,17 +1,20 @@
 public class FFTview : FFTObserver {
     private FFTmodel model;
-    FFTcontroller controller;
+    private ControllerInterface controller;
+    //possible components for displays
 
-    public FFTview(FFTmodel model) {
-        this.model = model;
+    public FFTview(ControllerInterface controller, FFTmodel model) {
         this.controller = controller;
+        this.model = model;
         model.registerObserver(this);
     }
     void updateFFT() {
         double low = model.getLow();
         double high = model.getHigh();
         double mid = model.getMid();
-        Console.WriteLine(low + "," + mid + "," + high);
+        Console.WriteLine(low + "," + mid + "," + high + " from the view");
     }
+
+    // add any code for user interface controls
 
 }
