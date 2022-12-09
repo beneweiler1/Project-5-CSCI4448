@@ -2,54 +2,24 @@ using System.IO;
 using System.Threading;
 using System.Collections.Generic;
 
-
-public interface FFTmodelInterface {
-
-    void initialize();
-    void readExcelfile();
-    void on();
-    void off();
-
-    double getMid();
-
-    double getHigh();
-
-    double getLow();
-    
-    void setFFTvalues(double low, double high, double mid);
-
-    void registerObserver(FFTview o);
-
-    void removeObserver(FFTview o);
-
-    void notifyFFTObserver();
-
-
-    // public int getBPM();
-
-    public void setBPM(int bpm);
-    public void setFilename(string filename);
-
-    // public void registerObserver(BPMObserver o);
-
-    // public void removeObserver(BPMObserver o);
-
-}
-
+//MVC pattern : model
 public class FFTmodel : FFTmodelInterface {
 
     private List<FFTview> FFTlst = new List<FFTview>();
-    Thread thread; // https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-7.0
     //beat thread
-    Boolean stop = false; // starts and stops beat thread
+    private Thread thread; // https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-7.0
+    private Boolean stop = false; // starts and stops beat thread
     private double bpm = 100; //default tells how long the thread should wait
 
-    private List<double[]> FFTBufferArray;
-    string filename = "test.csv";
-    int index; 
+    private List<double[]> FFTBufferArray = new List<double[]>(); // contains fft values from .csv files, used in initialize
+    int index; // index for FFTBufferArray
+    string filename = "test.csv"; // file name for fft values, test by defualt
+    // fft values
     private double low;
     private double mid;
     private double high;
+
+    // tries to open file and clears any values in FFTBufferArray
     public void initialize() {
         this.FFTBufferArray = new List<double[]>();
         try {
@@ -60,6 +30,7 @@ public class FFTmodel : FFTmodelInterface {
         }
     }
 
+    // reads excel file and adds to FFTBufferArray
     public void readExcelfile() {
         //try opening excel file and gathering data
         // https://stackoverflow.com/questions/5282999/reading-csv-file-and-storing-values-into-an-array
@@ -80,12 +51,14 @@ public class FFTmodel : FFTmodelInterface {
             }
         }
     }
-    //TODO
+    //function for thread to process
+    // updates the fft values using the FFTbufferArray 
+    // frequency of updates depends on bpm
     public void ThreadProc() {
         if (FFTBufferArray != null) {
             while (index < FFTBufferArray.Count && !stop) {
                 double[] FFTvalues = FFTBufferArray[index];
-                this.setFFTvalues(FFTvalues[0], FFTvalues[1], FFTvalues[2]);
+                this.setFFTvalues(FFTvalues[2], FFTvalues[1], FFTvalues[0]);
                 double sleep = 60000/bpm;
                 this.index ++;
                 // Console.WriteLine(FFTvalues[0] + ", " + FFTvalues[1] + ", " +  FFTvalues[2]);
@@ -97,6 +70,7 @@ public class FFTmodel : FFTmodelInterface {
         }
     }
     
+    // resets fft values and index as well as starts the model
     public void on() {
         //set default values
         this.low = 0; 
@@ -106,11 +80,14 @@ public class FFTmodel : FFTmodelInterface {
         this.start();
     } 
 
+    // starts the thread
     public void start() {
         this.stop = false;
         thread = new Thread(new ThreadStart(ThreadProc));
         thread.Start();
     }
+
+    // turns off the thread by changin stop value to true
     public void off() {
         //stop thread
         //print whats in 
@@ -119,21 +96,9 @@ public class FFTmodel : FFTmodelInterface {
         // }
         stop = true;
     }
-    
 
-    public double getMid() {
-        return this.mid;
-    }
-
-    public double getHigh() {
-        return this.high;
-    }
-
-    public double getLow() {
-        return this.low;
-    }
-
-    public void setFFTvalues(double low, double high, double mid) {
+    // sets fft values and calsl notifyFFTObserver
+    public void setFFTvalues(double high, double mid, double low) {
         this.low = low;
         this.high = high;
         this.mid = mid;
@@ -144,6 +109,7 @@ public class FFTmodel : FFTmodelInterface {
         this.bpm = bpm;
     }
 
+    // sets filename and restarts model to use new file
     public void setFilename(string filename) {
         //switch songs and restart
         this.off();
@@ -152,6 +118,7 @@ public class FFTmodel : FFTmodelInterface {
         this.on();
     }
 
+    // pattern: observer/subsriber
     public void registerObserver(FFTview o) {
         FFTlst.Add(o);
     }
@@ -169,27 +136,4 @@ public class FFTmodel : FFTmodelInterface {
             }
         }
     }
-
-    // public int getBPM() {
-    //     return this.bpm;
-    // }
-
-    // public void setBPM(int bpm){
-    //     this.bpm = bpm;
-    //     // notifyBPMObserver();
-    // } 
-
-    // void registerObserver(BPMObserver o) {
-    //     BPMlst.Add(o);
-    // }
-
-    // void removeObserver(BPMObserver o) {
-    //     BPMlst.Remove(o);
-    // }
-
-    // public void notifyBPMObserver() {
-    //     for (int i = 0; i < BPMlst.Count; i++) {
-    //         BPMlst[i].update(this.bpm);
-    //     }
-    // }
 }

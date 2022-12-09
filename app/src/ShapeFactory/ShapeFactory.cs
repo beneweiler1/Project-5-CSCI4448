@@ -2,6 +2,15 @@
 //Factory to create Shapes
 class ShapeFactory : Factory
 {
+    // singleton in csharp
+    // https://csharpindepth.com/articles/singleton
+    private static readonly ShapeFactory instance = new ShapeFactory();
+    static ShapeFactory() { }
+    private ShapeFactory() { }
+
+    public static ShapeFactory getInstance() { 
+        return instance;
+    }
  public override Shape FactoryMethod(string shape, string animation, string color)
  {
     Shape _shape;

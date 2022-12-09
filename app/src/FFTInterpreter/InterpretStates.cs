@@ -55,7 +55,7 @@ public class InterpretStates:FFTInterpreter
 //takes mid FFT and interprets it to a animation string
     public string interpretAnimation(double mid)
     {
-        if(mid <= .5)
+        if(mid <= .05)
         {
             return "TopSpin";
         }

@@ -1,14 +1,10 @@
-public interface ControllerInterface {
-    public void start();
-    public void stop();
-    // public void setFFTvalues(int high, int mid, int low);
-    public void setBPM(int bpm);
-    public void setFilename(string filename);
-}
 
+//MVC pattern : controller
 public class FFTcontroller : ControllerInterface {
     private FFTmodel model;
     private FFTview view;
+
+    // sets model and creates view
     public FFTcontroller(FFTmodel model) {
         this.model = model;
         model.initialize();
@@ -19,25 +15,27 @@ public class FFTcontroller : ControllerInterface {
         
     }
 
+    // invokes the model to turn on
     public void start() {
         model.on();
         // view.disableStartMenuItem();
         // view.enableStopMenuItem();
     }
 
+    // invokes the model to turn off
     public void stop() {
         model.off();
         // view.disableStopMenuItem();
         // view.enableStartMenuItem();
     }
     
+    // sets the bpm in the model
     public void setBPM(int bpm) {
         model.setBPM(bpm);
     }
+
+    // set the filename of the model
     public void setFilename(string filename) {
         model.setFilename(filename);
     }
-    // public void setFFTvalues(int high, int mid, int low) {
-    //     model.setFFTvalues(high, mid, low);
-    // }
 }
