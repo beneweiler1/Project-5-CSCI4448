@@ -1,25 +1,19 @@
 //interface for model
 public interface FFTmodelInterface {
 
-    void initialize();
-    void readExcelfile();
-    void on();
-    void off();
-
-    double getMid();
-
-    double getHigh();
-
-    double getLow();
+    public void initialize();
+    public void readExcelfile();
+    public void on();
+    public void off();
     
-    void setFFTvalues(double low, double high, double mid);
+    public void setFFTvalues(double low, double high, double mid);
 
-    void registerObserver(FFTview o);
+    public void registerObserver(FFTview o);
 
     // pattern: observer/subsriber
-    void removeObserver(FFTview o);
+    public void removeObserver(FFTview o);
 
-    void notifyFFTObserver();
+    public void notifyFFTObserver();
 
     public void setBPM(int bpm);
     public void setFilename(string filename);

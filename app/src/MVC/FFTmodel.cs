@@ -7,8 +7,8 @@ public class FFTmodel : FFTmodelInterface {
 
     private List<FFTview> FFTlst = new List<FFTview>();
     //beat thread
-    Thread thread; // https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-7.0
-    Boolean stop = false; // starts and stops beat thread
+    private Thread thread; // https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread?view=net-7.0
+    private Boolean stop = false; // starts and stops beat thread
     private double bpm = 100; //default tells how long the thread should wait
 
     private List<double[]> FFTBufferArray = new List<double[]>(); // contains fft values from .csv files, used in initialize
@@ -58,7 +58,7 @@ public class FFTmodel : FFTmodelInterface {
         if (FFTBufferArray != null) {
             while (index < FFTBufferArray.Count && !stop) {
                 double[] FFTvalues = FFTBufferArray[index];
-                this.setFFTvalues(FFTvalues[0], FFTvalues[1], FFTvalues[2]);
+                this.setFFTvalues(FFTvalues[2], FFTvalues[1], FFTvalues[0]);
                 double sleep = 60000/bpm;
                 this.index ++;
                 // Console.WriteLine(FFTvalues[0] + ", " + FFTvalues[1] + ", " +  FFTvalues[2]);
@@ -96,22 +96,9 @@ public class FFTmodel : FFTmodelInterface {
         // }
         stop = true;
     }
-    
-
-    public double getMid() {
-        return this.mid;
-    }
-
-    public double getHigh() {
-        return this.high;
-    }
-
-    public double getLow() {
-        return this.low;
-    }
 
     // sets fft values and calsl notifyFFTObserver
-    public void setFFTvalues(double low, double high, double mid) {
+    public void setFFTvalues(double high, double mid, double low) {
         this.low = low;
         this.high = high;
         this.mid = mid;
