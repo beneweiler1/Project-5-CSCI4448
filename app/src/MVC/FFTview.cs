@@ -1,31 +1,41 @@
 using System;
+//MVC pattern : view
 public class FFTview : Observer {
     private FFTmodel model;
     private ControllerInterface controller;
+    // fft values
     private double high;
     private double mid;
     private double low;
+    // state interpreter for factory methods
+    private InterpretStates fftInterpreter;
     //possible components for displays
 
+    // Constructor
+    // must take in a model and controller
     public FFTview(ControllerInterface controller, FFTmodel model) {
+        this.fftInterpreter = new InterpretStates();
         this.controller = controller;
         this.model = model;
         model.registerObserver(this);
         this.Prompt();
     }
 
-   
+   // updates the fft values and sends them to the state and factory patterns
     public void update(double high, double mid, double low) {
         this.low = low;
         this.high = high;
         this.mid = mid;
         //add state
-         // fftInterpreter.setStates(low, mid, high);
-        // Shape shape = fftInterpreter.generateShape(factory);
-        // shape.makeShape(10);
-        Console.WriteLine("view: " + low + "," + mid + "," + high + " from the view");
+        
+        fftInterpreter.setStates(low, mid, high);
+        ShapeFactory factory = ShapeFactory.getInstance();
+        Shape shape = fftInterpreter.generateShape(ShapeFactory.getInstance()); //singleton
+        shape.makeShape(10);
+        Console.WriteLine("view: " + low + "," + mid + "," + high );
     }
 
+    //prompts the user for inputs
     public void Prompt() {
         Console.WriteLine("Welcome to Audio Visualizer");
         //setting bpm
