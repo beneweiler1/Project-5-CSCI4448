@@ -20,6 +20,9 @@ public class FFTview : Observer {
         this.high = high;
         this.mid = mid;
         //add state
+         // fftInterpreter.setStates(low, mid, high);
+        // Shape shape = fftInterpreter.generateShape(factory);
+        // shape.makeShape(10);
         Console.WriteLine("view: " + low + "," + mid + "," + high + " from the view");
     }
 
@@ -45,6 +48,7 @@ public class FFTview : Observer {
             controller.start();
         }
     }
+
 
     // add any code for user interface controls
 

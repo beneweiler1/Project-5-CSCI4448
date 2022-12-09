@@ -1,8 +1,14 @@
+//https://medium.com/net-core/how-to-manage-states-with-state-design-pattern-in-c-d4ca47ec6aa
+
+//State pattern concept but does not have a class for each state option
+//instead there are fucntions to interpret the FFT values
+//FFT values are passed and the states of shape, color and animiation are changes
+//generateShape method uses the passed factory to return a shape
 public class InterpretStates:FFTInterpreter
 {
-    private String _shape;
-    private String _color;
-    private String _animation;
+    private string _shape;
+    private string _color;
+    private string _animation;
 
     public InterpretStates()
     {
@@ -21,7 +27,7 @@ public class InterpretStates:FFTInterpreter
     {
        return factory.FactoryMethod(_shape,_animation,_color);
     }  
-    public String interpretShape(double high)
+    public string interpretShape(double high)
     {
         if(high <= 0.5)
         {
@@ -47,7 +53,7 @@ public class InterpretStates:FFTInterpreter
     }
 
 //takes mid FFT and interprets it to a animation string
-    public String interpretAnimation(double mid)
+    public string interpretAnimation(double mid)
     {
         if(mid <= .5)
         {
@@ -69,7 +75,7 @@ public class InterpretStates:FFTInterpreter
     }
 
 //takes low FFT and interprets it to a color string
-    public String colorInterpreter(double low)
+    public string colorInterpreter(double low)
     {
         if(low <= 0.1){
             return "Green";
