@@ -23,8 +23,6 @@ class ShapeFactory : Factory
     break;
     case "Sphere": _shape = new Sphere();
     break;
-    case "Quad" : _shape = new Quad();
-    break;
     case "Cube": _shape = new Cube();
     break;
  default: throw new ArgumentException("Invalid type");

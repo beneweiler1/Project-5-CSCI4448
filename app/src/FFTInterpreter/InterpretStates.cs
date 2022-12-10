@@ -41,11 +41,7 @@ public class InterpretStates:FFTInterpreter
         {
             return "Sphere";
         }
-        else if(high <= 2.0)
-        {
-            return "Quad";
-        }
-        else if (high <= 2.5)
+        else if (high <= 2)
         {
             return "Cube";
         }
