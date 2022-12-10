@@ -1,14 +1,15 @@
 //https://www.tutorialspoint.com/design_pattern/factory_pattern.htm
-//Factory to create Shapes
+//Factory to create Shapes, uses singleton to make sure one factory is being used
 class ShapeFactory : Factory
 {
     // singleton in csharp
     // https://csharpindepth.com/articles/singleton
-    private static readonly ShapeFactory instance = new ShapeFactory();
+    private static readonly ShapeFactory instance = new ShapeFactory(); // singleton instance
     static ShapeFactory() { }
     private ShapeFactory() { }
 
-    public static ShapeFactory getInstance() { 
+    // returns the singleton instance
+    public static ShapeFactory getInstance() {  
         return instance;
     }
  public override Shape FactoryMethod(string shape, string animation, string color)
