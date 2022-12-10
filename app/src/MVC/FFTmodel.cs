@@ -22,6 +22,10 @@ public class FFTmodel : FFTmodelInterface {
     // tries to open file and clears any values in FFTBufferArray
     public void initialize() {
         this.FFTBufferArray = new List<double[]>();
+        this.low = 0; 
+        this.mid = 0;
+        this.high = 0;
+        this.index = 0;
         try {
             readExcelfile();
         }
@@ -73,10 +77,7 @@ public class FFTmodel : FFTmodelInterface {
     // resets fft values and index as well as starts the model
     public void on() {
         //set default values
-        this.low = 0; 
-        this.mid = 0;
-        this.high = 0;
-        this.index = 0;
+        
         this.start();
     } 
 

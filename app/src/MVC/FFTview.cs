@@ -51,6 +51,18 @@ public class FFTview : Observer {
                 Console.WriteLine("Error: " + bpm + " is not a valid number");
             }
         }
+        valid = false;
+        while (!valid) {
+            Console.WriteLine("Select song [1]/[2]");
+            string choice = Console.ReadLine();
+            if (choice == "1") {
+                controller.setFilename("Song1.csv");
+                valid = true;
+            } else if (choice == "2") {
+                controller.setFilename("test.csv");
+                valid = true;
+            }
+        }
         Console.WriteLine("Controls:");
         Console.WriteLine("Controls: press [p] to play");
         string option = Console.ReadLine();
@@ -58,8 +70,5 @@ public class FFTview : Observer {
             controller.start();
         }
     }
-
-
-    // add any code for user interface controls
 
 }
