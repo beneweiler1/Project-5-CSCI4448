@@ -6,7 +6,7 @@ Final Video presentation: https://drive.google.com/file/d/1tIR-h94tjAc8y68zNHHtv
 For running in terminal: 
 Download app directory and in terminal use command dotnet run
 
-DotNet Information
+## DotNet Information
 .NET SDK (reflecting any global.json):
  Version:   6.0.401
  Commit:    0906eae6f8
@@ -39,12 +39,10 @@ Download .NET:
   https://aka.ms/dotnet-download
 
 
+## For Unity: Download .exe file and open (only works for Windoes 64 bit)
+Assets file contains all scripts and game objects
 
 
-
-
-
-For Unity: Download .exe file and open (only works for Windoes 64 bit)
 
 
 ### app - contains all project components including:
@@ -58,11 +56,3 @@ Final Video presentation: https://drive.google.com/file/d/1tIR-h94tjAc8y68zNHHtv
 ## Instuctions to Run
 For running in terminal: 
 Download app directory and in terminal use command dotnet run
-
-
-
-For Unity: Download .exe file and open (only works for Windoes 64 bit)
-To look at Unity Scripts and objects downloads assets
-Place them in your unity directory
-Drag Music Visualizer into Scene
-Run scene.
