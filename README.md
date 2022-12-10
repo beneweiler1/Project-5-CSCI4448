@@ -5,4 +5,4 @@ Final Video presentation: https://drive.google.com/file/d/1tIR-h94tjAc8y68zNHHtv
 ## Instuctions to Run
 For .NET framework:
 
-For Unity: Download .exe file and open
+For Unity: Download .exe file and open (only works for Windoes 64 bit)
