@@ -10,4 +10,4 @@ For Unity: Download .exe file and open (only works for Windoes 64 bit)
 
 
 ### app - contains all project components including:
-csharp files, db (for FFT values)
+csharp files (class files in src), db (for FFT values)
