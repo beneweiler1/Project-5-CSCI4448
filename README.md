@@ -7,3 +7,7 @@ For running in terminal:
 Download app directory and in terminal use command dotnet run
 
 For Unity: Download .exe file and open (only works for Windoes 64 bit)
+
+
+### app - contains all project components including:
+csharp files, db (for FFT values)
